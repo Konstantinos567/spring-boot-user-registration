@@ -8,6 +8,7 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -42,6 +43,10 @@ public class GlobalExceptionHandler {
                 "Request body is malformed. Check the field formats (gender: M or F, birthdate: yyyy-MM-dd).");
         problem.setTitle("Malformed request");
         return problem;
+    }
+    @ExceptionHandler(NoResourceFoundException.class)
+    public ProblemDetail handleNoResource(NoResourceFoundException ex) {
+        return ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, "Resource not found.");
     }
 
     @ExceptionHandler(Exception.class)
