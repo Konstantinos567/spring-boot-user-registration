@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>User Registration</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
     <style>
         .view { display: none; }
     </style>
@@ -48,18 +49,91 @@
     </section>
 
     <section id="view-register" class="view">
-        <h2>Register New User</h2>
-        <p>Coming in step F5.</p>
+        <h2 class="mb-3">Register New User</h2>
+
+        <form id="register-form" class="col-md-6">
+
+            <div class="mb-3">
+                <label for="name" class="form-label">Name *</label>
+                <input type="text" id="name" class="form-control" maxlength="100" required>
+                <div class="invalid-feedback" id="error-name"></div>
+            </div>
+
+            <div class="mb-3">
+                <label for="surname" class="form-label">Surname *</label>
+                <input type="text" id="surname" class="form-control" maxlength="100" required>
+                <div class="invalid-feedback" id="error-surname"></div>
+            </div>
+
+            <div class="mb-3">
+                <label for="gender" class="form-label">Gender *</label>
+                <select id="gender" class="form-select" required>
+                    <option value="">-- Select --</option>
+                    <option value="M">M</option>
+                    <option value="F">F</option>
+                </select>
+                <div class="invalid-feedback" id="error-gender"></div>
+            </div>
+
+            <div class="mb-3">
+                <label for="birthdate" class="form-label">Birthdate *</label>
+                <input type="text" id="birthdate" class="form-control" placeholder="yyyy-mm-dd" autocomplete="off" required>
+                <div class="invalid-feedback" id="error-birthdate"></div>
+            </div>
+
+            <div class="mb-3">
+                <label for="workAddress" class="form-label">Work Address</label>
+                <textarea id="workAddress" class="form-control" rows="2" maxlength="500"></textarea>
+                <div class="invalid-feedback" id="error-workAddress"></div>
+            </div>
+
+            <div class="mb-3">
+                <label for="homeAddress" class="form-label">Home Address</label>
+                <textarea id="homeAddress" class="form-control" rows="2" maxlength="500"></textarea>
+                <div class="invalid-feedback" id="error-homeAddress"></div>
+            </div>
+
+            <button type="submit" class="btn btn-success">Register</button>
+            <p class="text-muted mt-2 small">* Required fields</p>
+        </form>
     </section>
 
     <section id="view-details" class="view">
-        <h2>User Details</h2>
-        <p>Coming in step F4.</p>
+        <h2 class="mb-3">User Details</h2>
+
+        <div id="details-content" class="card">
+            <div class="card-body">
+                <dl class="row mb-0">
+                    <dt class="col-sm-3">Name</dt>
+                    <dd class="col-sm-9" id="details-name"></dd>
+
+                    <dt class="col-sm-3">Surname</dt>
+                    <dd class="col-sm-9" id="details-surname"></dd>
+
+                    <dt class="col-sm-3">Gender</dt>
+                    <dd class="col-sm-9" id="details-gender"></dd>
+
+                    <dt class="col-sm-3">Birthdate</dt>
+                    <dd class="col-sm-9" id="details-birthdate"></dd>
+
+                    <dt class="col-sm-3">Work Address</dt>
+                    <dd class="col-sm-9" id="details-work-address"></dd>
+
+                    <dt class="col-sm-3">Home Address</dt>
+                    <dd class="col-sm-9" id="details-home-address"></dd>
+                </dl>
+            </div>
+        </div>
+
+        <div id="details-not-found" class="alert alert-warning" style="display: none;">
+            User not found. It may have been deleted.
+        </div>
     </section>
 
 </main>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.14.1/jquery-ui.min.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>
