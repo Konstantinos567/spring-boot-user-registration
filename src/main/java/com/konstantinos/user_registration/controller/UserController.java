@@ -31,6 +31,7 @@ public class UserController {
     public UserDetailsResponse getUserById(@PathVariable Long id) {
         return userService.findById(id);
     }
+
     @PostMapping
     public ResponseEntity<UserDetailsResponse> createUser(@Valid @RequestBody UserCreateRequest request) {
         UserDetailsResponse created = userService.create(request);
